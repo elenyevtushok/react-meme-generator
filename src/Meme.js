@@ -1,5 +1,8 @@
 import React from "react"
 
+import * as htmlToImage from "html-to-image";
+import download from "downloadjs";
+
 export default function Meme(){
 
 	const [meme, setMeme] = React.useState({
@@ -32,6 +35,13 @@ export default function Meme(){
 			[name]: value,
 		}))
 	}
+	function downloadMemeImage(){
+		htmlToImage
+			.toPng(document.getElementById("my-meme"))
+			.then(function (dataUrl) {
+				download(dataUrl, 'my-node.png');
+			});
+	}
 
 	return(
 		<main className="Meme">
@@ -56,14 +66,20 @@ export default function Meme(){
 					className="meme-form-button"
 					onClick = {getMemeImage}
 				>
-					Get a new meme image 🖼️ 
+					Get a new meme image 
 				</button>
 			</div>
-			<div className="meme">
+			<div className="meme" id="my-meme">
 				<img src={meme.randomImage} alt="memeimage" className="meme--image" />
 				<h2 className="meme--text top">{meme.topText}</h2>
 				<h2 className="meme--text bottom">{meme.bottomText}</h2>
 			</div>
+			<button
+				className="meme-download"
+				onClick={downloadMemeImage}
+			>
+				Download meme
+			</button>
 		</main>
 	)
 }

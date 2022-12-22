@@ -97,3 +97,25 @@ main{
 .top {
     top: 0;
 }
+
+.meme-download{
+	font-family: "Karla", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	color: white;
+	line-height: 19px;
+	letter-spacing: -0.1em;
+	border-radius: 5px;
+	border: none;
+	background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+	cursor: pointer;
+	padding: 10px;
+	display: block;
+	width: 100%;
+}
+
+@media(max-width: 400px){
+	body {
+		max-width: 400px;
+	}
+}
